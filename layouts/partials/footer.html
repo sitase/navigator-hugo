@@ -4,47 +4,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <h3>About</h3>
+                    <h3>{{i18n "about"}}</h3>
                     {{ with .Site.Params.footerDescription }}<p>{{ . }}</p>{{ end }}
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <h3>Our Services</h3>
+                    <h3>{{i18n "lifecycle"}}</h3>
                     <ul>
-                        {{ range .Site.Menus.service }}
+                        {{ range .Site.Menus.life }}
                         <li>
-                            <a href="{{ .URL }}">{{ .Name }}</a>
+                            <a href="{{ .URL }}">{{ i18n .Name }}</a>
                         </li>
                         {{ end }}
                     </ul>
                 </div>
                 <div class="col-sm-3 col-md-3 col-lg-3">
-                    <h3>Quick Links</h3>
+                    <h3>{{i18n "about"}}</h3>
                     <ul>
-                        {{ range .Site.Menus.quicklink }}
+                        {{ range .Site.Menus.about }}
                         <li>
-                            <a href="{{ .URL }}">{{ .Name }}</a>
+                            <a href="{{ .URL }}">{{ i18n .Name }}</a>
                         </li>
                         {{ end }}
                     </ul>
                 </div>
-                <div class="col-sm-3 col-md-3 col-lg-3">
-                    <h3>Subscribe Now</h3>
-                    <form class="subscribe-form">
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        </div>
-                        <button type="submit" class="btn btn-main-sm">Subscribe Now</button>
-                    </form>
-                </div>
+
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <h5>Copyright 2018. All rights reserved.</h5>
-        <h6>Design and Developed by themefisher.com
-            <br>Get More
-            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
-        </h6>
+      <div class="container row">
+        <div class="col-md-6 col-lg-2 col-sm-7 align-middle">{{i18n "disclaimer"}}</div>
+        <div class="col-auto align-middle"><img src="{{.Site.Params.footer.image}}"></div>
+      </div>
     </div>
 </footer>
 {{ "<!-- end footer -->" | safeHTML }}

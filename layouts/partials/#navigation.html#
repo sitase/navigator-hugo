@@ -1,0 +1,49 @@
+{{ "<!-- Fixed Navigation -->" | safeHTML }}
+<!-- <section class="top-bar animated-header"> emprunt depuis timer theme -->
+{{ if .Site.Params.menufixed }}
+    <section class="header navigation top-bar animated-header">
+{{ else }}
+    <section class="header navigation">
+{{ end }}
+    <div class="container">
+        <div class="row col-md-12">
+          <div class="">
+                <nav class="navbar navbar-expand-md">
+                    <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+                        <img src="{{ with .Site.Params.logo }}{{ . | absURL }}{{ end }}" alt="logo"> {{ .Site.Params.logo }}
+                    </a>
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse-area" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+	                <span class="tf-ion-android-menu"></span>
+                    </button>
+
+		    <div id="collapse-area" class="collapse navbar-collapse">
+	    <div cl>
+                    <div id=" navbarSupportedContent">
+                        <div class="row navbar-nav ml-auto">
+                            <div class="nav-item col-1">
+                                <a class="nav-link" href="{{ .Site.BaseURL }}">{{ with .Site.Params.home }}{{ . }}{{ end }}</a>
+                            </div>
+                            {{ range .Site.Menus.nav }}
+                            <div class="nav-item col-1" >
+                                <a class="nav-link" href="{{ .URL | absLangURL }}">{{ i18n .Name }}</a>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+            <div class="row justify-content-end">
+                            <!-- Icones & drapeaux de choix des langues -->
+	<div id="drapeaux" >
+            <!-- Pour passer la langue actuelle (variable globale) dans la range \
+=> explicitement -->
+            {{ range .Site.Params.listeLangues }}
+                {{ partial "flags.html" (dict "site" $.Site "liste" .) }}
+            {{ end }}
+        </div>
+            </div>
+	    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
