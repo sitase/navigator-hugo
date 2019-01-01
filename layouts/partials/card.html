@@ -1,0 +1,62 @@
+
+{{ "<!-- About Section Start -->" | safeHTML }}
+
+{{ $i:=.idx}}
+
+{{ with .p }}
+
+{{$imgFile := ( printf "%s%s" (path.Join "/content/" .File.Dir .File.TranslationBaseName)  ".jpg")}}
+{{$imgUrl := ( printf "/%s%s" (path.Join  .File.Dir .File.TranslationBaseName)  ".jpg")}}
+
+{{$sideimage:=""}}
+{{$sidetitle:=""}}
+{{$toptitle:=""}}
+
+{{if (fileExists $imgFile) }}
+  {{.Scratch.Add "toptitle" .Title}}
+  {{.Scratch.Add "sideimage" (printf "<img src=\"%s\" class=\"img-fluid rounded shadow\" alt=\"about-image\">" $imgUrl)}}
+{{else}}
+{{.Scratch.Add "sidetitle" .Title}}
+{{ end }}
+{{$sidetitle:=.Scratch.Get "sidetitle"}}
+{{$toptitle:=.Scratch.Get "toptitle"}}
+{{$sideimage:=.Scratch.Get "sideimage"}}
+
+{{ if (mod $i 2) eq 0 }}
+<div class="row mt-50 justify-content-center">
+    <div class="col-md-5 col-md-5 col-sm-12 offset-md-1">
+        <div class="content">
+          <h2>{{ $toptitle }}</h2>
+              <p>
+                {{ .Content }}
+            </p>
+        </div>
+    </div>
+    <div class="col-12 col-md-5 col-sm-12 text-center">
+      {{$sideimage|safeHTML}}
+
+      <h2 class="side">{{ $sidetitle }}</h2>
+      </div>
+
+  <div class="col-12 col-md-5 col-sm-12 text-center">
+  </div>
+</div>
+{{ else }}
+    <div class="row mb-50 justify-content-center">
+        <div class="col-md-5 col-sm-12 text-center offset-md-1">
+          {{$sideimage|safeHTML}}
+          <h2 class="side">{{ $sidetitle }}</h2>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <div class="content">
+            <h2>{{ $toptitle }}</h2>
+              <p>
+                  {{ .Content }}
+              </p>
+          </div>
+    </div>
+{{ end }}
+
+{{end}}
+
+{{"<!-- About section End -->" | safeHTML}}

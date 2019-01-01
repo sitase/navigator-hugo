@@ -784,11 +784,11 @@ a:focus, a:hover {
   background: #F7F7F7;
 }
 
-.about-2 h2 {
+.side h2 {
   position: relative;
 }
 
-.about-2 h2:before {
+.side h2:before {
   position: absolute;
   left: -15%;
   top: 18px;
@@ -944,13 +944,13 @@ a:focus, a:hover {
   padding: 10px;
 }
 
-.map {
+/* .map {
   position: relative;
-}
+}*/
 
 .map #map {
   height: 400px;
-  color: white;
+  color: red;
 }
 
 .contact-meta-block {

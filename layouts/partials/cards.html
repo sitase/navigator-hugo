@@ -1,0 +1,5 @@
+<section id="cards">
+{{ range $index, $value:= where .Data.Pages "Section" "frontstuff" }}
+ {{partial "card.html" (dict "p" $value "idx" $index)}}
+{{ end }}
+</section>
